@@ -1,0 +1,25 @@
+{{ form_start(form, { attr: { id: 'comment_form' } }) }}
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.email) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md">
+            {{ form_row(form.comment) }}
+        </div>
+    </div>
+    {% if type == 'comment' %}
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Add Comment</button>
+    {% elseif type == 'reply' %}
+    {{ form_row(form.parent_comment_id, {
+        'value': comment.id }) }}
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Add Reply</button>
+    {% endif %}
+{{ form_end(form) }}
+
+<hr class="mb-4">

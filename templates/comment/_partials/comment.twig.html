@@ -1,0 +1,27 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                {{ comment.name }}
+            </div>
+            {% if links is not defined or links == true %}
+            <div class="text-right col-4">
+                <a href="{{ path('view_comment', {id: comment.id}) }}">
+                    View comment
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>{{ comment.comment }}</p>
+
+            <footer class="blockquote-footer mb-3">
+                {{ comment.dateCreated|date('Y-m-d H:i:s') }}
+                {% if links is not defined or links == true %} | <a href="{{ path('view_comment', {id: comment.id}) }}"> {{ commentsService.getReplyCount(comment.id) }} Replies</a>
+                {% endif %}
+            </footer>
+        </blockquote>
+    </div>
+</div>
