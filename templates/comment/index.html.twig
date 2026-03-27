@@ -6,7 +6,7 @@
             <h4 class="mb-3">Recent Comments</h4>
 
             {% for comment in comments %}
-                {% include 'comment/_partials/comment.twig.html' %}
+                {% include 'comment/_partials/comment.html.twig' %}
             {% endfor %}
             
 
@@ -16,7 +16,8 @@
 
             <h4 class="mb-3">Add a comment</h4>
 
-             {% include 'comment/_partials/form.twig.html'  with { 'type': 'comment' } %}
+            {# Display the form, we set type to 'comment' #}
+            {% include 'comment/_partials/form.html.twig'  with { 'type': 'comment' } %}
 
         </div>
     </div>

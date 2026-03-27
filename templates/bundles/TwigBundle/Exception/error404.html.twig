@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block header_content %}
+
+{% endblock header_content %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-3">404 Not Found</h1>
+            <p>The page you are looking for could not be found.</p>
+            <a href="{{ path('homepage') }}" class="btn btn-primary">Return to homepage</a>
+
+        </div>
+    </div>
+{% endblock body_content %}

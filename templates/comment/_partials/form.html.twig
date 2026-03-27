@@ -13,6 +13,9 @@
             {{ form_row(form.comment) }}
         </div>
     </div>
+    {# If the type is 'comment' we display the button to add a comment, 
+    if it's 'reply' we also include the hidden field for parent_comment_id and set its value to the current comment's id, 
+    we don't need to add a catch-all since we are certain the type will only be either 'comment' or 'reply' #}
     {% if type == 'comment' %}
     <button class="btn btn-primary btn-lg btn-block" type="submit">Add Comment</button>
     {% elseif type == 'reply' %}

@@ -21,7 +21,7 @@ final class Version20260327142322 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         // dummy data for testing pagination and reply counts
-        //DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND)
+        // randomise the dates DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND)
         $this->addSql("INSERT INTO comments (name, email, comment, date_created, date_updated) VALUES 
             ('Alice', 'alice@example.com', 'Parent 1', DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND), DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND)),
             ('Bob', 'bob@example.com', 'Parent 2', DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND), DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 2592000) SECOND)),

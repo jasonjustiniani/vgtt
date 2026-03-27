@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block header_content %}
+
+{% endblock header_content %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-3">An error occurred</h1>
+            <p>Sorry, something went wrong. Please try again later.</p>
+            <a href="{{ path('homepage') }}" class="btn btn-primary">Return to homepage</a>
+
+        </div>
+    </div>
+{% endblock body_content %}

@@ -9,9 +9,9 @@
 {% block body_content %}
     <div class="row">
         <div class="col-md-12">
-            
-            {% include 'comment/_partials/comment.twig.html' with { 'links': false } %}
-            
+
+            {# Display the main comment #}
+            {% include 'comment/_partials/comment.html.twig' with { 'links': false } %}
             
             <hr />
 
@@ -19,7 +19,7 @@
                 <h4 class="mb-3">{{ commentsService.getReplyCount(comment.id) }} Replies</h4>
 
                 {% for reply in replies %}
-                    {% include 'comment/_partials/comment.twig.html' with { 'comment': reply, 'links': false } %}
+                    {% include 'comment/_partials/comment.html.twig' with { 'comment': reply, 'links': false } %}
                 {% endfor %}
 
                 {{ knp_pagination_render(replies) }}
@@ -27,7 +27,8 @@
 
                 <h4 class="mb-3">Reply to {{ comment.name }}</h4>
 
-                {% include 'comment/_partials/form.twig.html'  with { 'type': 'reply' } %}
+                {# Display the form, we set type to 'reply' #}
+                {% include 'comment/_partials/form.html.twig'  with { 'type': 'reply' } %}
             </div>
         </div>
     </div>

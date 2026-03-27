@@ -1,5 +1,4 @@
 <?php declare(strict_types=1);
-
 // src/Form/Type/CommentAddType.php
 namespace App\Form\Type;
 
@@ -12,6 +11,7 @@ class CommentAddType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Set the form method to POST and add fields for name, email, and comment
         $builder
             ->setMethod('POST')
             ->add('name', TextType::class, ['required' => true, 'label' => 'Name'])
@@ -19,6 +19,4 @@ class CommentAddType extends AbstractType
             ->add('comment', TextareaType::class, ['required' => true, 'label' => 'Comment'])
         ;
     }
-
-    
 }
