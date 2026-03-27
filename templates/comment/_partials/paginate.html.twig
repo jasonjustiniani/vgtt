@@ -1,0 +1,44 @@
+{# customised pagination control implementation using Bootstrap classes #}
+{% if pageCount > 1 %}
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if first is defined and current != first %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, knp_pagination_query(query, first, options)) }}">&lt;&lt;</a>
+            </li>
+        {% endif %}
+
+        {% if previous is defined %}
+            <li class="page-item">
+                <a class="page-link" rel="prev" href="{{ path(route, knp_pagination_query(query, previous, options)) }}">&lt;</a>
+            </li>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path(route, knp_pagination_query(query, page, options)) }}">{{ page }}</a>
+                </li>
+            {% else %}
+                <li class="page-item active">
+                    <span class="page-link">
+                        {{ page }}
+                    </span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if next is defined %}
+            <li class="page-item">
+                <a class="page-link" rel="next" href="{{ path(route, knp_pagination_query(query, next, options)) }}">&gt;</a>
+            </li>
+        {% endif %}
+
+        {% if last is defined and current != last %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, knp_pagination_query(query, last, options)) }}">&gt;&gt;</a>
+            </li>
+        {% endif %}
+        </ul>
+    </nav>
+{% endif %}
