@@ -16,7 +16,7 @@
             <hr />
 
             <div class="ml-4">
-                <h4 class="mb-3">{{ commentsService.getReplyCount(comment.id) }} Replies</h4>
+                <h4 class="mb-3" id="replies">{{ commentsService.getReplyCount(comment.id) }} Replies</h4>
 
                 {% for reply in replies %}
                     {% include 'comment/_partials/comment.html.twig' with { 'comment': reply, 'links': false } %}

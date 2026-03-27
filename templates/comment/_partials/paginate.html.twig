@@ -1,7 +1,7 @@
 {# customised pagination control implementation using Bootstrap classes #}
 {% if pageCount > 1 %}
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
+      <ul class="pagination justify-content-center">
         {% if first is defined and current != first %}
             <li class="page-item">
                 <a class="page-link" href="{{ path(route, knp_pagination_query(query, first, options)) }}">&lt;&lt;</a>
