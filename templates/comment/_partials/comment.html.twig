@@ -19,7 +19,7 @@
             <p>{{ comment.comment }}</p>
 
             <footer class="blockquote-footer mb-3">
-                {{ comment.dateCreated|date('Y-m-d H:i:s') }}
+                {{ comment.dateCreated|date('jS F Y, h:i A') }}
                 {% if links is not defined or links == true %} | <a href="{{ path('view_comment', {id: comment.id, '_fragment': 'replies'}) }}"> {{ commentsService.getReplyCount(comment.id) }} Replies</a>
                 {% endif %}
             </footer>

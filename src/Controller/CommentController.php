@@ -34,16 +34,13 @@ final class CommentController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                try {
-                    // Save the new comment to the database
-                    $this->entityManager->persist($comment);
-                    $this->entityManager->flush();
+
+                $commentRepository = $this->entityManager->getRepository(Comments::class);
+                if($commentRepository->save($comment, true)) {
                     $this->addFlash('success', 'Your comment has been posted.');
-                } catch (\Exception $e) {
-                    // Handle any exceptions that occur during database operations
+                } else {
                     $this->addFlash('error', 'Failed to add comment. Please try again.');
                 }
-                // Redirect to the homepage to prevent form resubmission
                 return $this->redirectToRoute('homepage'); 
             } else {
                 // If the form is not valid, add an error flash message
@@ -79,16 +76,17 @@ final class CommentController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                try {
-                    $this->entityManager->persist($reply);
-                    $this->entityManager->flush();
+                
+                $replyRepository = $this->entityManager->getRepository(Comments::class);
+                if($replyRepository->save($reply, true)) {
                     $this->addFlash('success', 'Your reply has been posted.');
-                } catch (\Exception $e) {
+                } else {
                     $this->addFlash('error', 'Failed to add reply. Please try again.');
                 }
+
                 return $this->redirectToRoute('view_comment', ['id' => $comment->getId()]); // Redirect to prevent form resubmission
             } else {
-                $this->addFlash('error', 'Please correct the errors in the form.');
+                $this->addFlash('error', 'Please correct the errors in the reply form.');
             }
         }
 

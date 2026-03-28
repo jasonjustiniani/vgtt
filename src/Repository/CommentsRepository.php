@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Comments;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Comments>
@@ -17,6 +16,19 @@ class CommentsRepository extends ServiceEntityRepository
         )
     {
         parent::__construct($registry, Comments::class);
+    }
+
+    public function save(Comments $entity, bool $flush = false): bool
+    {
+        try {
+            $this->getEntityManager()->persist($entity);
+            if ($flush) {
+                $this->getEntityManager()->flush();
+            }
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     // Retrieve all top-level comments (where parent_comment_id is null) and order them by date_created in descending order, we also add pagination here
